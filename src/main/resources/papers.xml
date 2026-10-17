@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Paper xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="papers.xsd">
+
+    <Periodical id="p1">
+        <Title>Урядовий кур'єр</Title>
+        <Type>NEWSPAPER</Type>
+        <Monthly>false</Monthly>
+        <Chars>
+            <Colored>false</Colored>
+            <Volume>16</Volume>
+            <Glossy>false</Glossy>
+            <SubscriptionIndex>12345</SubscriptionIndex>
+        </Chars>
+    </Periodical>
+
+    <Periodical id="p2">
+        <Title>Forbes Ukraine</Title>
+        <Type>MAGAZINE</Type>
+        <Monthly>true</Monthly>
+        <Chars>
+            <Colored>true</Colored>
+            <Volume>120</Volume>
+            <Glossy>true</Glossy>
+            <SubscriptionIndex>54321</SubscriptionIndex>
+        </Chars>
+    </Periodical>
+
+    <Periodical id="p3">
+        <Title>ІТ Конференція 2026</Title>
+        <Type>BOOKLET</Type>
+        <Monthly>false</Monthly>
+        <Chars>
+            <Colored>true</Colored>
+            <Volume>8</Volume>
+            <Glossy>true</Glossy>
+        </Chars>
+    </Periodical>
+
+    <Periodical id="p4">
+        <Title>Vogue UA</Title>
+        <Type>MAGAZINE</Type>
+        <Monthly>true</Monthly>
+        <Chars>
+            <Colored>true</Colored>
+            <Volume>200</Volume>
+            <Glossy>true</Glossy>
+            <SubscriptionIndex>98765</SubscriptionIndex>
+        </Chars>
+    </Periodical>
+</Paper>

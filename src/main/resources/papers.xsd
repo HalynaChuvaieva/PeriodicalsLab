@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <!-- Простий тип: Перелік (Enumeration) для типу видання -->
+    <xs:simpleType name="PeriodicalType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="NEWSPAPER"/>
+            <xs:enumeration value="MAGAZINE"/>
+            <xs:enumeration value="BOOKLET"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Простий тип: Граничні значення для обсягу сторінок -->
+    <xs:simpleType name="VolumeType">
+        <xs:restriction base="xs:positiveInteger">
+            <xs:minInclusive value="2"/>
+            <xs:maxInclusive value="1000"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Простий тип: Шаблон для підписного індексу (5 цифр) -->
+    <xs:simpleType name="SubscriptionIndexType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{5}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Комплексний тип: Характеристики (Chars) -->
+    <xs:complexType name="CharsType">
+        <xs:sequence>
+            <xs:element name="Colored" type="xs:boolean"/>
+            <xs:element name="Volume" type="VolumeType"/>
+            <xs:element name="Glossy" type="xs:boolean"/>
+            <!-- minOccurs="0", бо буклети не мають підписного індексу -->
+            <xs:element name="SubscriptionIndex" type="SubscriptionIndexType" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Комплексний тип: Одне періодичне видання з обов'язковим атрибутом ID -->
+    <xs:complexType name="PeriodicalItemType">
+        <xs:sequence>
+            <xs:element name="Title" type="xs:string"/>
+            <xs:element name="Type" type="PeriodicalType"/>
+            <xs:element name="Monthly" type="xs:boolean"/>
+            <xs:element name="Chars" type="CharsType"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:ID" use="required"/>
+    </xs:complexType>
+
+    <!-- Кореневий елемент Paper -->
+    <xs:element name="Paper">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Periodical" type="PeriodicalItemType" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
