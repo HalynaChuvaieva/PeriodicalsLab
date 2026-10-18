@@ -19,14 +19,14 @@ public class Main {
             File xslFile = new File("src/main/resources/transform.xsl");
             File outputXml = new File("src/main/resources/papers_grouped.xml");
 
-            // 1. Валідація XML за XSD
+            // валідація XML за XSD
             boolean isValid = XmlValidator.validate(xmlFile, xsdFile);
             if (!isValid) {
                 logger.warn("Програму зупинено через невалідний XML.");
                 return;
             }
 
-            // 2. Розбір парсерами DOM, SAX, StAX
+            // розбір парсерами DOM, SAX, StAX
             PeriodicalParser domParser = new DomPeriodicalParser();
             PeriodicalParser saxParser = new SaxPeriodicalParser();
             PeriodicalParser staxParser = new StaxPeriodicalParser();
@@ -35,12 +35,12 @@ public class Main {
             saxParser.parse(xmlFile);
             staxParser.parse(xmlFile);
 
-            // 3. Сортування за допомогою Comparator
+            // сортування через Comparator
             logger.info("--- Сортування видань за обсягом сторінок ---");
             listFromDom.sort(PeriodicalComparators.byVolume());
             listFromDom.forEach(p -> logger.info(p.toString()));
 
-            // 4. XSL-перетворення
+            // XSL-перетворення
             XslTransformer.transform(xmlFile, xslFile, outputXml);
 
         } catch (Exception e) {
